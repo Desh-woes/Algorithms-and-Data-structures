@@ -6,8 +6,8 @@ def generate_string():
     alpha = list(string.ascii_lowercase)
     alpha.append(' ')
     word = ''
-    for x in range(0, 27):
-        y = random.randint(0, 26)
+    for x in range(0, 28):
+        y = random.randint(0, len(alpha)-1)
         word = word + alpha[y]
 
     return word

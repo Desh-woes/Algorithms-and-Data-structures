@@ -16,14 +16,14 @@ def generate_string():
     # Check is the list has been filled once, if not, fill it
     if len(word_list) < len(goal):
         for x in range(0, len(goal)):
-            y = random.randint(0, len(alpha))
+            y = random.randint(0, len(alpha) - 1)
             word_list.append(alpha[y])
 
     # Loop through the list and keep correct letters
     else:
         for x in range(0, len(word_list)):
             if word_list[x] != goal[x]:
-                y = random.randint(0, len(alpha))
+                y = random.randint(0, len(alpha)- 1)
                 word_list[x] = alpha[y]
 
     # Concatenate all letters in word_list to form a word
