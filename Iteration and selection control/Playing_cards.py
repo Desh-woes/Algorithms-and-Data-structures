@@ -18,5 +18,5 @@ class PlayingCard:
         return 'Your card is a/an ' + self.rank + ' of ' + self.suit
 
 
-card = PlayingCard('Spades', 'Jac')
+card = PlayingCard('Spades', 'Jack')
 print(card)
