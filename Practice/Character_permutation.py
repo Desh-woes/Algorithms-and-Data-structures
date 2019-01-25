@@ -20,8 +20,8 @@
 
 # Approach 2
 # Define test arrays
-arr_1 = ['r', 'a', 'u', 'd', 'a']
-arr_2 = ['a', 'u', 'd', 'a', 'r']
+arr_1 = ['a', 'a', 'a', 'aa']
+arr_2 = ['a', 'a', 'a', 'a']
 
 
 # Define a function to check if array two is a permutation of array 1

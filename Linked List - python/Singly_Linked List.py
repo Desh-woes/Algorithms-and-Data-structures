@@ -71,16 +71,46 @@ class CircularLinkedList:
         cur_node = self.cur
         while cur_node.next != self.cur:
             if cur_node.next.data == new_node.data:
-                return cur_node.data
+                return cur_node
             cur_node = cur_node.next
         return None
 
+    # Delete an element from the list
+    def delete(self, data):
+        del_node = Node(data)
+        cur_node = self.cur
+        while cur_node.next != self.cur:
+            if cur_node.next.data == del_node.data:
+                cur_node.next = cur_node.next.next
+                return
+            cur_node = cur_node.next
+        return 'Item is not in the list'
+
+    # Move current pointer
+    def step(self):
+        self.cur = self.cur.next
+
+    # Display the list
+    def display(self):
+        cur_node = self.cur
+        while cur_node.next != self.cur:
+            if cur_node.data is not None:
+                print(cur_node.data)
+            cur_node = cur_node.next
+        print(cur_node.data)
+
+
+
 
 # Test params Circular list
-test = CircularLinkedList()
+test = CircularLinkedList(5)
 test.append(1)
 test.append(2)
 test.append(3)
 test.append(4)
-print(test.cur.next.data)
-print(test.search(2))
+test.step()
+test.display()
+# test.step()
+# print(test.delete(5))
+# print(test.cur.next.data)
+# print(test.search(4))
