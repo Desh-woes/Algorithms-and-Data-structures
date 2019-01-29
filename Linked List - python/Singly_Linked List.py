@@ -53,8 +53,11 @@ class LinkedList:
 # Singly linked circular list
 class CircularLinkedList:
     def __init__(self, data=None):
-        self.cur = Node(data)
-        self.cur.next = self.cur
+        if data is not None:
+            self.cur = Node(data)
+            self.cur.next = self.cur
+        else:
+            self.cur = data
 
     # Appending in a Circular linked list
     def append(self, data):
@@ -100,17 +103,15 @@ class CircularLinkedList:
         print(cur_node.data)
 
 
-
-
 # Test params Circular list
-test = CircularLinkedList(5)
-test.append(1)
-test.append(2)
-test.append(3)
-test.append(4)
-test.step()
-test.display()
+test = CircularLinkedList()
+# test.append(1)
+# test.append(2)
+# test.append(3)
+# test.append(4)
 # test.step()
-# print(test.delete(5))
-# print(test.cur.next.data)
-# print(test.search(4))
+# test.display()
+# # test.step()
+# # print(test.delete(5))
+# # print(test.cur.next.data)
+# # print(test.search(4))
