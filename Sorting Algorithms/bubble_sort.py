@@ -4,14 +4,14 @@ def sort_array(arr):
     # By default, our array is NOT sorted.
     array_sorted = False
 
+    # List end
+    list_end = len(arr) - 1
+
     # While array is not sorted, go through the array and bubble the largest element to the end.
     while not array_sorted:
 
         # First set the array to be sorted.
         array_sorted = True
-
-        # List end
-        list_end = len(arr) - 1
 
         # Go through the array and check if there is any element that is out of place.
         for x in range(0, list_end):
