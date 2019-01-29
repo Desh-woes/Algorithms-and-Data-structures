@@ -30,5 +30,5 @@ def swap(arr, position_1, position_2):
 
 
 # Test parameters
-arr_test = [15, 456, 790, 0, 9, 30, 60, 20, 12, 40, 90, 15]
+arr_test = [140, 89, 678, 767, 766, 765, 6764, 73, 562, 3451, 250, 2607]
 print(sort_array(arr_test))
