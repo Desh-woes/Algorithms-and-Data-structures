@@ -1,32 +1,44 @@
 # Implementing the node class
 class Node:
-    def __init__(self, data=None):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
 
 # Create the node wrapper
 class LinkedList:
-    def __init__(self):
-        self.head = Node()
-        self.tail = Node()
+    def __init__(self, data=None):
+        if data is None:
+            self.head = data
+
+        else:
+            self.head = Node(data)
+            self.tail = self.head
 
     # Implement append function
     def append(self, data):
         new_node = Node(data)
         cur = self.head
-        while cur.next is not None:
-            cur = cur.next
-        cur.next = new_node
-        self.tail.next = cur.next
+
+        if cur is not None:
+            while cur.next is not None:
+                cur = cur.next
+            cur.next = new_node
+            self.tail = cur.next
+
+        else:
+            self.head = new_node
 
     # Implement count/len function
     def length(self):
         cur = self.head
         count = 0
-        while cur.next is not None:
-            count += 1
-            cur = cur.next
+        if cur is not None:
+            count = 1
+            while cur.next is not None:
+                count += 1
+                cur = cur.next
+
         return count
 
     # Implement Index get function
@@ -38,80 +50,61 @@ class LinkedList:
             cur_index = 0
             cur = self.head
             while True:
-                cur = cur.next
                 if cur_index == index:
                     return cur.data
                 else:
+                    cur = cur.next
                     cur_index += 1
 
-# Test params
-# test = LinkedList()
-# test.append(2)
-# test.append(3)
-
-
-# Singly linked circular list
-class CircularLinkedList:
-    def __init__(self, data=None):
-        if data is not None:
-            self.cur = Node(data)
-            self.cur.next = self.cur
-        else:
-            self.cur = data
-
-    # Appending in a Circular linked list
-    def append(self, data):
-        new_node = Node(data)
-        cur_node = self.cur
-        while cur_node.next != self.cur:
-            cur_node = cur_node.next
-        new_node.next = cur_node.next
-        cur_node.next = new_node
-
-    # Search for a given number in the list
-    def search(self, data):
-        new_node = Node(data)
-        cur_node = self.cur
-        while cur_node.next != self.cur:
-            if cur_node.next.data == new_node.data:
-                return cur_node
-            cur_node = cur_node.next
-        return None
-
-    # Delete an element from the list
-    def delete(self, data):
-        del_node = Node(data)
-        cur_node = self.cur
-        while cur_node.next != self.cur:
-            if cur_node.next.data == del_node.data:
-                cur_node.next = cur_node.next.next
-                return
-            cur_node = cur_node.next
-        return 'Item is not in the list'
-
-    # Move current pointer
-    def step(self):
-        self.cur = self.cur.next
-
-    # Display the list
+    # Function to display the contents of the linked list
     def display(self):
-        cur_node = self.cur
-        while cur_node.next != self.cur:
-            if cur_node.data is not None:
-                print(cur_node.data)
-            cur_node = cur_node.next
-        print(cur_node.data)
+        cur = self.head
+        while cur.next is not None:
+            print(cur.data)
+            cur = cur.next
+        print(cur.data)
+
+    # Function to reverse the contents of the linked list
+    def reverse(self):
+        # Current is a pointer to head
+        cur = self.head
+
+        # If out pointer is null, then our list is empty so return it
+        if cur is None:
+            return cur
+
+        # Else if our list is not empty
+        else:
+
+            # While we are not on our last element
+            while cur.next is not None:
+                # Store our next value as temp
+                temp = cur.next
+
+                # Switching variable in position 1
+                if cur == self.head:
+                    cur.next = None
+                    temp_2 = temp.next
+                    temp.next = cur
+                    self.head = temp
+                    cur = temp_2
+
+                # Switching variables in other positions
+                else:
+                    cur.next = self.head
+                    self.head = cur
+                    cur = temp
+
+            # Switching the last variable
+            cur.next = self.head
+            self.head = cur
 
 
-# Test params Circular list
-test = CircularLinkedList()
-# test.append(1)
-# test.append(2)
-# test.append(3)
-# test.append(4)
-# test.step()
-# test.display()
-# # test.step()
-# # print(test.delete(5))
-# # print(test.cur.next.data)
-# # print(test.search(4))
+# Test params
+test = LinkedList(1)
+test.append(2)
+test.append(3)
+test.display()
+# print(test.get(0))
+test.reverse()
+test.display()
