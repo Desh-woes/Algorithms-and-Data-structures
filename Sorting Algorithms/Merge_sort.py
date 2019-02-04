@@ -1,5 +1,6 @@
 def merge_sort(arr):
     merge_sort2(arr, 0, len(arr)-1)
+    return arr
 
 
 def merge_sort2(arr, first, last):
@@ -27,6 +28,5 @@ def merge(arr, first, middle, last):
 
 
 # Test parameters
-arr_test = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-merge_sort(arr_test)
-print(arr_test)
+arr_test = [106, 56549, 86547, 5477, 7667, -56756, 6467, 367, 782, -451, 0]
+print(merge_sort(arr_test))

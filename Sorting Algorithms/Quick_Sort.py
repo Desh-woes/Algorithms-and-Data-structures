@@ -1,6 +1,7 @@
 # Basic quick sort interface
 def quick_sort(arr):
     quick_sort2(arr, 0, len(arr)-1)
+    return arr
 
 
 # Recursive quick sort function
@@ -46,8 +47,7 @@ def partition(arr, first, last):
 
 
 # Test parameters
-arr_test = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-quick_sort(arr_test)
-print(arr_test)
+arr_test = [106, 56549, 86547, 5477, 7667, -56756, 6467, 367, 782, -451, 0]
+print(quick_sort(arr_test))
 
 
