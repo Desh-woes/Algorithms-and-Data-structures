@@ -64,4 +64,5 @@ def infix_to_postfix(string):
 
 # test
 infix = "( A + B ) * ( C + D )"
+infix2 = "( A + B ) * C - ( D - E ) * ( F + G)"
 print(infix_to_postfix(infix))
