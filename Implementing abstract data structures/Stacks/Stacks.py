@@ -45,12 +45,30 @@ def check_par(symbol):
 
     while index < len(symbol) and balanced:
         char = symbol[index]
-        if char == '(':
+        if char in '{[(':
             s.push(char)
         else:
             if s.is_empty():
                 balanced = False
             else:
-                s.pop()
-
+                top = s.pop()
+                if not matches(top, char):
+                    balanced = False
         index += 1
+
+    if balanced and s.is_empty():
+        return True
+    else:
+        return False
+
+
+def matches(first, last):
+    opens = "([{"
+    closes = ")]}"
+    return opens.index(first) == closes.index(last)
+
+
+# Test
+symbol = '((((()))))'
+print(check_par(symbol))
+
