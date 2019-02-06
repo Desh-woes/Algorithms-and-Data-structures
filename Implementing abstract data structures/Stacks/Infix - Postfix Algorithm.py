@@ -13,12 +13,13 @@ def infix_to_postfix(string):
 
     # Split string into a list
     string_list = string.split()
+    print(string_list)
 
     # Initialize output list where the new arrangement would be stored
     output_list = []
 
     # Initialize dictionary to hold all our precedents and their respective weights
-    precedence = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
+    precedence = {"*": 3, "/": 3, "+": 2, "-": 2, "(": 1, "^": 4}
 
     # Loop through all the elements in our slitted list of strings
     for x in string_list:
@@ -65,4 +66,5 @@ def infix_to_postfix(string):
 # test
 infix = "( A + B ) * ( C + D )"
 infix2 = "( A + B ) * C - ( D - E ) * ( F + G)"
-print(infix_to_postfix(infix))
+infix3 = "5 * 3 ^ ( 4 - 2 )"
+print(infix_to_postfix(infix3))
