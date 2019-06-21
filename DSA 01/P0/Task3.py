@@ -43,3 +43,64 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+# Solution A: (Not sure this is the most efficient way but)..
+distinct_codes = {}
+for i in calls:
+
+    # Check if the caller is using a fixed line from Bangalore.
+    if i[0][:5] == "(080)":
+        receiver = i[1]
+
+        # Check if the receiver has a fixed line that is not from Bangalore
+        if receiver[0] == "(" and (receiver[:5] != "(080)"):
+            code = ""
+            for letter in receiver:
+                if letter != ")":
+                    code += letter
+                else:
+                    break
+            code += ")"
+
+        # Check if the receiver has a fixed line from Bangalore
+        elif receiver[:5] == "(080)":
+            code = "(080)"
+
+        # Check if receiver has a Telemarketers' number
+        elif receiver[:3] == "140":
+            code = "140"
+
+        # Check if receiver has a mobile number
+        else:
+            code = i[1][:4]
+
+        # Add code to the dictionary
+        if code not in distinct_codes.keys():
+            distinct_codes[code] = 1
+        else:
+            distinct_codes[code] += 1
+
+# Get the list of all the codes
+code_list = list(distinct_codes.keys())
+
+
+# Additional nLogn complexity. I am not sure this is efficient.
+code_list.sort()
+
+print("The numbers called by people in Bangalore have codes:")
+for code in code_list:
+    print(code)
+
+# Solution 2
+accumulator = 0
+
+# get the total number of calls made from fixed lines in Bangalore.
+for value in distinct_codes.values():
+    accumulator += value
+
+# Get the percentage of those calls that belong to other fixed lines in Bangalore
+percentage = (distinct_codes["(080)"]/accumulator)*100
+
+print("{:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in "
+      "Bangalore.".format(percentage))
+

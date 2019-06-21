@@ -20,3 +20,13 @@ Print a message:
 September 2016.".
 """
 
+# Solution (Finding the longest call)
+index_with_longest_duration = 0
+
+for index, value in enumerate(calls):
+    if int(value[3]) > int(calls[index_with_longest_duration][3]):
+        index_with_longest_duration = index
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(
+    calls[index_with_longest_duration][0], calls[index_with_longest_duration][3]))
+

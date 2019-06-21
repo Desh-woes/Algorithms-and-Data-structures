@@ -1,0 +1,18 @@
+# Runtime analysis for task 0:
+Both algorithms run in constant time since I am simply printing elements from a known index.
+
+# Runtime analysis for task 1:
+Runtime is O(n) where n is the larger dataset between the text and calls dataset. This is because I am using two loops
+as against one loop so by highest order, the time complexity of my algorithm would be affected majorly by the larger
+dataset.
+
+# Runtime analysis for task 2:
+The runtime here is also O(n) because I loop through the calls dataset just once in search of the longest call.
+
+# Runtime analysis for task 3:
+By highest order, the runtime of this algorithm is O(nlogn). This is because of the sort in-built function which I used
+in getting the elements to a lexicographic order before printing. The second part takes O(n) time also but n here being
+the number of distinct codes.
+
+# Runtime analysis for task 4:
+Same as in task 3, by highest order, the runtime of this algorithm is O(nlogn) because of the python in-built sort method

@@ -20,3 +20,9 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
+# Solution (First record of texts)
+print(texts[0])
+
+# Solution 2 (Last record of calls)
+print(calls[len(calls)-1])
+
