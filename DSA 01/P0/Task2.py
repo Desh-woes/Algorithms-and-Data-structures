@@ -21,12 +21,26 @@ September 2016.".
 """
 
 # Solution (Finding the longest call)
-index_with_longest_duration = 0
+call_durations = {}
 
-for index, value in enumerate(calls):
-    if int(value[3]) > int(calls[index_with_longest_duration][3]):
-        index_with_longest_duration = index
+for call_record in calls:
+    if call_record[0] not in call_durations:
+        call_durations[call_record[0]] = int(call_record[3])
+    else:
+        call_durations[call_record[0]] += int(call_record[3])
+
+    if call_record[1] not in call_durations:
+        call_durations[call_record[1]] = int(call_record[3])
+    else:
+        call_durations[call_record[1]] += int(call_record[3])
+
+largest_key = ""
+largest_value = 0
+for key, value in call_durations.items():
+    if value > largest_value:
+        largest_key = key
+        largest_value = value
 
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(
-    calls[index_with_longest_duration][0], calls[index_with_longest_duration][3]))
+    largest_key, largest_value))
 

@@ -49,18 +49,12 @@ distinct_codes = {}
 for i in calls:
 
     # Check if the caller is using a fixed line from Bangalore.
-    if i[0][:5] == "(080)":
+    if i[0].startswith("(080)"):
         receiver = i[1]
 
         # Check if the receiver has a fixed line that is not from Bangalore
         if receiver[0] == "(" and (receiver[:5] != "(080)"):
-            code = ""
-            for letter in receiver:
-                if letter != ")":
-                    code += letter
-                else:
-                    break
-            code += ")"
+            code = receiver.split(")")[0]+")"
 
         # Check if the receiver has a fixed line from Bangalore
         elif receiver[:5] == "(080)":

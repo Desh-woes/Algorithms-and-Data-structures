@@ -1,5 +1,6 @@
 # Runtime analysis for task 0:
-Both algorithms run in constant time since I am simply printing elements from a known index.
+Both algorithms run in constant time since I am simply printing elements from a known index i.e I am using the python get
+operation and this operation costs O(1) constant because the python list is index based.
 
 # Runtime analysis for task 1:
 Runtime is O(n) where n is the larger dataset between the text and calls dataset. This is because I am using two loops
@@ -7,12 +8,16 @@ as against one loop so by highest order, the time complexity of my algorithm wou
 dataset.
 
 # Runtime analysis for task 2:
-The runtime here is also O(n) because I loop through the calls dataset just once in search of the longest call.
+The runtime here remains O(n) even though there are two loops in the algorithm. By highest order, the runtime complexity
+would be largely affected by the size of the call's dataset as compared to the size of the call_durations dictionary.
 
 # Runtime analysis for task 3:
 By highest order, the runtime of this algorithm is O(nlogn). This is because of the sort in-built function which I used
 in getting the elements to a lexicographic order before printing. The second part takes O(n) time also but n here being
-the number of distinct codes.
+the number of distinct codes. The initial loop to get the list of all the codes however takes a runtime of O(n) as we
+have to loop through the entire calls dataset.
 
 # Runtime analysis for task 4:
-Same as in task 3, by highest order, the runtime of this algorithm is O(nlogn) because of the python in-built sort method
+Same as in task 3, by highest order, the runtime of this algorithm is O(nlogn) because of the python in-built sort method.
+However, setting up the sets take a runtime of O(n) where n is a combined lengths of both dataset and the set difference
+operation cost O(k) where k is the length of the universal set.
