@@ -7,24 +7,28 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
-    return _helper_func(number, 0, number)
+    return _helper_func(0, number, number)
 
 
-def _helper_func(number, start_value, end_value):
-    if end_value - start_value == 1:
-        if end_value * end_value <= number:
-            return end_value
-        return start_value
+def _helper_func(start_value, end_value, target):
+    # Get the mid point
+    mid_point = (start_value + end_value)//2
 
-    mid_value = (start_value + end_value) // 2
+    # Condition if the square of our mid point is less than out target
+    if mid_point**2 < target:
+        # If the square of the next largest value is greater than our target, the return out current value.
+        if (mid_point+1)**2 > target:
+            return mid_point
+        # Else, find the next best target
+        return _helper_func(mid_point+1, end_value, target)
 
-    if mid_value * mid_value <= number:
-        if (mid_value + 1) * (mid_value + 1) > number:
-            return mid_value
-        return _helper_func(number, mid_value, end_value)
+    # Find a lower middle point
+    elif mid_point**2 > target:
+        return _helper_func(start_value, mid_point-1, target)
 
+    # Else if we have found the best target, return it.
     else:
-        return _helper_func(number, start_value, mid_value - 1)
+        return mid_point
 
 
 print("Pass" if (3 == sqrt(9)) else "Fail")
